@@ -1,0 +1,52 @@
+<body>
+
+<form>
+<div>
+<input type="text" placeholder="Nome"     class="form-control" name="nome" [(ngModel)]="cliente.nome">
+<input type="text" placeholder="Cnpj"     class="form-control" name="cnpj" [(ngModel)]="cliente.cnpj">
+<input type="text" placeholder="Endereco" class="form-control" name="endereco" [(ngModel)]="cliente.endereco">
+</div>
+
+<div>
+<input type="button" value="Cadastrar" *ngIf="btnCadastro" class="btn btn-primary" (click)="cadastrar()">
+<input type="button" value="Alterar"  *ngIf="!btnCadastro" class="btn btn-warning" (click)="update()">
+<input type="button" value="Remover"  *ngIf="!btnCadastro" class="btn btn-danger" (click)="remover()">
+<input type="button" value="Cancelar"  *ngIf="!btnCadastro" class="btn btn-secundary" (click)="cancelar()" >
+</div>
+</form>
+
+
+<div class="map-container">
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    <div>
+      <p>Coordenadas: {{ lat }}, {{ lng }}</p>
+    </div>
+  </div>
+
+<div class="f">
+    <input type="text" [(ngModel)]="searchText" placeholder="Filtrar clientes" />
+  </div>
+
+<table class="tabela" *ngIf="tabela">
+        <thead class="thead-dark">
+            <tr >
+                <th>#</th>
+                <th>Nome</th>
+                <th>Cnpj</th>
+                <th>Endereco</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+
+        <tbody  >
+            <tr  *ngFor="let c of clientes | filter:searchText; index as i  ">
+                <td>{{c.codigo}}</td>
+                <td>{{c.nome}}</td>
+                <td>{{c.cnpj}}</td>
+                <td>{{c.endereco}}</td>
+                <td><button class="btn btn-success" (click)="selecionarClienteE(i)">Selecionar</button></td>
+            </tr>
+        </tbody>
+
+</table>
+</body>
