@@ -1,11 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Cliente } from '../Cliente';
 import { ClienteService } from '../servico/cliente.service';
 import { CommonModule, NgFor } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../filter.pipe';
-import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 
@@ -13,7 +12,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
   selector: 'app-principal',
   standalone: true,
   imports:[  FormsModule,
-    HttpClientModule, 
     NgFor, 
     CommonModule,
     FilterPipe 
@@ -58,7 +56,7 @@ export class PrincipalComponent {
 
   loadGoogleMapsScript(callback: () => void): void {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAGFWBA1FqUs9EwRotXsehq6aDr_rD0Zxo&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAGFWBA1FqUs9EwRotXsehq6aDr_rD0Zxo&loading=async&callback=initMap&libraries=marker`;
     script.async = true;
     script.defer = true;
     (window as any).initMap = callback;
@@ -70,7 +68,9 @@ export class PrincipalComponent {
     const initialPosition = { lat: this.lat, lng: this.lng };
     this.map = new google.maps.Map(mapElement, {
       center: initialPosition,
-      zoom: 8
+      zoom: 8,
+      mapId: 'ERNANI' // Substitua 'YOUR_MAP_ID' pelo seu mapId
+
     });
 
     this.marker = new google.maps.marker.AdvancedMarkerElement({

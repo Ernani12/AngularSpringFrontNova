@@ -1,10 +1,7 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from '../Cliente';
-import { NgFor } from '@angular/common';
-import { PrincipalComponent } from '../principal/principal.component';
-import { FormsModule } from '@angular/forms';
 
 
 

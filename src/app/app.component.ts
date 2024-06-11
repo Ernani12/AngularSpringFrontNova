@@ -1,8 +1,6 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
 import { PrincipalComponent } from './principal/principal.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 
 
@@ -13,7 +11,6 @@ import { NgFor } from '@angular/common';
   imports:[
     PrincipalComponent,
     FormsModule,
-    HttpClientModule,
     NgFor,
   ],
   templateUrl: './app.component.html',
