@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef  } from '@angular/core';
 import { Cliente } from '../Cliente';
 import { ClienteService } from '../servico/cliente.service';
 import { CommonModule, NgFor } from '@angular/common';
@@ -44,7 +44,7 @@ export class PrincipalComponent {
 
   clientes: Cliente[]=[];
 
-  constructor(private servico:ClienteService){}
+  constructor(private servico:ClienteService,private cdr: ChangeDetectorRef){}
 
     //ja no inicio traz esses clientes
     ngOnInit(){   
@@ -114,6 +114,8 @@ export class PrincipalComponent {
       (this.marker as google.maps.marker.AdvancedMarkerElement).position = newPosition;
       this.map?.setCenter(newPosition);
     }
+    // Forçar detecção de mudanças
+    this.cdr.detectChanges();
   }
   
   //selecionar todos os clientes 
